@@ -6,7 +6,7 @@
 LISTEN="STARTUP_COMMAND_RUN"
 
 printenv | more | grep "${LISTEN}" | while read -r line ; do
-  sh -c ${line#*=} &
+  sh -c "${line#*=}" &
 done
 
 # Naive check runs checks once a minute to see if either of the processes exited.
@@ -29,7 +29,7 @@ while sleep 8 & wait $!; do
     # Grep process status
 
     process="${line#*=}"
-    ps aux | grep "${process%% *}" | grep -v grep
+    ps aux | grep "${process%% *}" | grep -v grep > /dev/null
 
     # If the greps above find anything, they exit with 0 status
     # If they are not both 0, then something is wrong

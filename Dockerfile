@@ -1,6 +1,6 @@
 FROM amd64/alpine:3.14
 
-ENV STARTUP_COMMAND_RUN_NGINX="nginx -g daemon off;"
+ENV STARTUP_COMMAND_RUN_NGINX="nginx"
 
 RUN apk update && \
     apk add --no-cache nginx && \
@@ -15,5 +15,7 @@ RUN adduser -D -g www www && \
 
 RUN rm -Rf /etc/nginx/sites-enabled && \
     rm -Rf /etc/nginx/sites-available
+
+USER www
 
 ENTRYPOINT /wrapper.sh
