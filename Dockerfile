@@ -10,7 +10,7 @@ COPY wrapper.sh /
 COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN adduser -D -g www www && \
-    chown -R www:www /var/lib/nginx && \
+    chown -R www:www /var/lib/nginx /var/log/nginx && \
     chmod +x wrapper.sh
 
 RUN rm -Rf /etc/nginx/sites-enabled && \
