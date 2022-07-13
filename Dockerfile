@@ -18,4 +18,6 @@ RUN rm -Rf /etc/nginx/sites-enabled && \
 
 USER www
 
+EXPOSE 8080
+
 ENTRYPOINT /wrapper.sh
