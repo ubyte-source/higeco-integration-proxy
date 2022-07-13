@@ -6,7 +6,7 @@ RUN apk update && \
     apk add --no-cache nginx && \
     rm -rf /var/cache/apk/*
 
-COPY wrapper.sh /
+COPY wrapper.sh /wrapper.sh
 COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN adduser -D -g www www && \
